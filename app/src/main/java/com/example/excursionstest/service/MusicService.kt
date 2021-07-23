@@ -54,16 +54,8 @@ class MusicService : MediaBrowserServiceCompat() {
 
         override fun onCustomAction(action: String?, extras: Bundle?) {
             when(action){
-                "seek_back" -> {
-                    seekBack()
-                    val playbackSpeed = if (exoPlayer?.playbackState == PlaybackStateCompat.STATE_PLAYING) 1.0f else 0.0f
-                    updatePlaybackState(exoPlayer!!.playbackState,exoPlayer!!.currentPosition, playbackSpeed)
-                }
-                "seek_forward" -> {
-                    seekForward()
-                    val playbackSpeed = if (exoPlayer?.playbackState == PlaybackStateCompat.STATE_PLAYING) 1.0f else 0.0f
-                    updatePlaybackState(exoPlayer!!.playbackState,exoPlayer!!.currentPosition, playbackSpeed)
-                }
+                "seek_back" -> seekBack()
+                "seek_forward" -> seekForward()
             }
         }
     }
@@ -104,6 +96,7 @@ class MusicService : MediaBrowserServiceCompat() {
                 setSessionToken(sessionToken)
                 isActive = true
             }
+
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
@@ -154,17 +147,17 @@ class MusicService : MediaBrowserServiceCompat() {
     }
 
     fun seekTo(position: Long){
-        exoPlayer?.seekTo(position)
         val playbackSpeed = if (exoPlayer?.playbackState == PlaybackStateCompat.STATE_PLAYING) 1.0f else 0.0f
-        updatePlaybackState(exoPlayer!!.playbackState,exoPlayer!!.currentPosition, playbackSpeed)
+        updatePlaybackState(exoPlayer!!.playbackState, position, playbackSpeed)
+        exoPlayer?.seekTo(position)
     }
 
     fun seekBack(){
         val currentPosition = exoPlayer?.currentPosition ?: 0
         if (currentPosition >= 5000) {
-            exoPlayer?.seekTo(currentPosition - 5 * 1000)
+            seekTo(currentPosition - 5 * 1000)
         }else{
-            exoPlayer?.seekTo(0)
+            seekTo(0)
         }
     }
 
@@ -174,9 +167,9 @@ class MusicService : MediaBrowserServiceCompat() {
         val currentPosition = exoPlayer?.currentPosition ?: 0
 
         if (duration - currentPosition > 5000) {
-            exoPlayer?.seekTo(currentPosition + 5 * 1000)
+            seekTo(currentPosition + 5 * 1000)
         }else{
-            exoPlayer?.seekTo(duration)
+            seekTo(duration)
         }
     }
 
