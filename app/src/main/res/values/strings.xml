@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ExcursionsTest</string>
+    <string name="audio_excursion">Аудио-экскурсия</string>
+    <string name="_1x">1x</string>
+</resources>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main_screen.MainScreenFragment">
+
+    <ImageButton
+        android:id="@+id/main_screen_close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_padding"
+        android:src="@drawable/outline_close_24"
+        android:background="@drawable/circle_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/main_screen_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_padding"
+        android:src="@drawable/outline_more_horiz_black_24"
+        android:background="@drawable/circle_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/main_screen_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/double_padding"
+        android:layout_marginStart="@dimen/default_padding"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_close_button"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="шаг 1/1"/>
+
+    <TextView
+        android:id="@+id/main_screen_step_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/default_padding"
+        android:layout_marginEnd="@dimen/default_padding"
+        android:layout_marginTop="@dimen/one_and_a_half_padding"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_step"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Добро пожаловать в Зимний Дворец"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_screen_step_images"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/double_padding"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_step_name"
+        app:layout_constraintBottom_toTopOf="@id/main_screen_step_images_tabs"/>
+
+    <TextView
+        android:id="@+id/main_screen_step_images_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/three_quarters_padding"
+        android:paddingEnd="@dimen/three_quarters_padding"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_marginBottom="@dimen/half_padding"
+        android:layout_marginEnd="@dimen/half_padding"
+        android:textColor="@color/white"
+        android:background="@drawable/image_counter_background"
+        app:layout_constraintBottom_toBottomOf="@id/main_screen_step_images"
+        app:layout_constraintEnd_toEndOf="@id/main_screen_step_images"
+        tools:text="1/6"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_screen_step_images_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_step_images"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
+        app:tabMaxWidth="10dp"/>
+
+    <TextView
+        android:id="@+id/main_screen_step_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_padding"
+        android:layout_marginBottom="@dimen/default_padding"
+        android:layout_marginStart="@dimen/default_padding"
+        android:layout_marginEnd="@dimen/default_padding"
+        android:lines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/main_screen_step_images_tabs"
+        app:layout_constraintBottom_toTopOf="@id/main_screen_player_panel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Do you feel shouting 'Fight! Fight!' with the mad crowd wearing your comfortable toga today?"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_screen_player_panel"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <SeekBar
+            android:id="@+id/main_screen_player_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/main_screen_player_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/half_padding"
+            android:src="@drawable/outline_more_vert_black_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_player_seek_bar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/main_screen_player_play_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="@dimen/half_padding"
+            android:src="@drawable/outline_play_circle_filled_black_24"
+            app:layout_constraintStart_toEndOf="@id/main_screen_player_menu"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_player_seek_bar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/main_screen_player_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginStart="@dimen/half_padding"
+            android:layout_marginEnd="@dimen/half_padding"
+            app:layout_constraintStart_toEndOf="@id/main_screen_player_play_button"
+            app:layout_constraintEnd_toStartOf="@id/main_screen_player_seek_back_button"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_player_seek_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Добро пожаловать в Зимний дворец он"/>
+
+        <ImageView
+            android:id="@+id/main_screen_player_seek_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/half_padding"
+            android:src="@drawable/outline_replay_5_black_24"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_player_seek_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/main_screen_player_speed_button"/>
+
+
+        <TextView
+            android:id="@+id/main_screen_player_speed_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_player_seek_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/main_screen_seek_forward_button"
+            android:text="@string/_1x"/>
+
+        <ImageView
+            android:id="@+id/main_screen_seek_forward_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_forward_5_black_24"
+            android:padding="@dimen/half_padding"
+            app:layout_constraintTop_toBottomOf="@id/main_screen_player_seek_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

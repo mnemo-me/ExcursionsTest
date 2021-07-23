@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="half_padding">8dp</dimen>
+    <dimen name="quarter_padding">4dp</dimen>
+    <dimen name="three_quarters_padding">12dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="one_and_a_half_padding">24dp</dimen>
+    <dimen name="double_padding">32dp</dimen>
+
+    <dimen name="repo_panel_height">72dp</dimen>
+    <dimen name="author_avatar_height">72dp</dimen>
+</resources>
